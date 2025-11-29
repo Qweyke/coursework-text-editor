@@ -9,7 +9,8 @@ class FileSearcher : public QObject
 	Q_OBJECT
 
   private:
-	QString currentFilePath;
+	QString workingDir;
+	QString filePath;
 
 	bool removeAppDir();
 
@@ -18,8 +19,11 @@ class FileSearcher : public QObject
 	~FileSearcher() = default;
 
   public slots:
-	bool saveFile(QString& text);
-	bool saveFileAs(QString& newFilePath, QString& text);
+	bool saveFile(const QString& text);
+	bool saveFileAs(const QString& newFilePath, const QString& text);
+	QString openFile(const QString& filePath);
+	void setFilePath(const QString& path);
+	QString getFilePath() const;
 
   signals:
 };
